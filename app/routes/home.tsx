@@ -1,5 +1,7 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Builder from "../components/Builder/Builder";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +11,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Builder />
+    </DndProvider>
+  );
 }
